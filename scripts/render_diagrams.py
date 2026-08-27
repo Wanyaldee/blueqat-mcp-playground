@@ -243,6 +243,49 @@ def draw_budget_items(costs, selected, target, out_path, title):
     print(f"wrote {out_path}")
 
 
+CAT_ORANGE = "#eb6834"
+
+
+def draw_return_risk_scatter(assets, out_path, title):
+    """assets: [{"label": str, "market": "JP"|"US", "ret": float, "vol": float}, ...]"""
+    fig, ax = plt.subplots(figsize=(5.8, 4.6))
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+
+    ax.set_axisbelow(True)
+    ax.grid(True, color=GRIDLINE, lw=1.0, zorder=0)
+    for spine in ("top", "right"):
+        ax.spines[spine].set_visible(False)
+    for spine in ("left", "bottom"):
+        ax.spines[spine].set_color(BASELINE)
+
+    market_color = {"JP": SEQ_BLUE, "US": CAT_ORANGE}
+    seen = set()
+    for a in assets:
+        c = market_color[a["market"]]
+        label = a["market"] if a["market"] not in seen else None
+        seen.add(a["market"])
+        ax.scatter(a["vol"] * 100, a["ret"] * 100, s=110, color=c, zorder=3,
+                    edgecolors=SURFACE, linewidths=1.2, label=label)
+        dx, dy = a.get("label_offset", (8, 6))
+        ax.annotate(a["label"], (a["vol"] * 100, a["ret"] * 100),
+                     textcoords="offset points", xytext=(dx, dy), fontsize=9.5, color=INK_SECONDARY)
+
+    ax.axhline(0, color=INK_MUTED, lw=1.0, zorder=1)
+    ax.set_xlabel("年率ボラティリティ（％）", fontsize=10, color=INK_SECONDARY)
+    ax.set_ylabel("年率リターン（％、USD換算）", fontsize=10, color=INK_SECONDARY)
+    ax.set_title(title, fontsize=12, color=INK_PRIMARY, pad=12)
+    ax.tick_params(colors=INK_MUTED, labelsize=9)
+    legend = ax.legend(loc="upper right", frameon=True, fontsize=9.5, labelcolor=INK_SECONDARY,
+                         facecolor=SURFACE, edgecolor=BASELINE, framealpha=1.0)
+    legend.get_frame().set_linewidth(1.0)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=180, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out_path}")
+
+
 def main():
     ASSETS.mkdir(exist_ok=True)
 
@@ -315,6 +358,19 @@ def main():
         target=10,
         out_path=ASSETS / "07_budget_items.png",
         title="Budget matching QUBO: selected subset",
+    )
+
+    draw_return_risk_scatter(
+        assets=[
+            {"label": "Toyota (7203.T)", "market": "JP", "ret": 0.0094, "vol": 0.3186},
+            {"label": "MUFG (8306.T)", "market": "JP", "ret": 0.4557, "vol": 0.3302},
+            {"label": "SoftBank G (9984.T)", "market": "JP", "ret": 0.2361, "vol": 0.8857},
+            {"label": "Apple (AAPL)", "market": "US", "ret": 0.3365, "vol": 0.2603},
+            {"label": "Microsoft (MSFT)", "market": "US", "ret": -0.0135, "vol": 0.3313,
+             "label_offset": (8, -14)},
+        ],
+        out_path=ASSETS / "08_portfolio_return_risk.png",
+        title="JP+US basket: annualized return vs. volatility (1y, USD-adjusted)",
     )
 
 

@@ -55,6 +55,7 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 | 5 | [VQEで横磁場イジング模型](examples/05_vqe_transverse_ising.md) | `run_vqe` | 2量子ビットの横磁場イジング模型の基底エネルギーを変分法で求める |
 | 6 | [量子乱数生成](examples/06_quantum_random_number_generator.md) | `run_circuit` | 棄却サンプリングで公正な6面サイコロを作る。**実生活**: 抽選・ガチャの公正性証明、暗号鍵生成 |
 | 7 | [QAOAで予算ぴったり一致](examples/07_qaoa_budget_matching.md) | `run_qaoa` | 部分和問題をQUBOで解く。**実生活**: 経理の消込、在庫の詰め合わせ |
+| 8 | [QAOAで日米株ポートフォリオ選定](examples/08_qaoa_portfolio_jp_us.md) | `run_qaoa` | 実際の日米株価データ(yfinance)からMarkowitz型の銘柄選択QUBOを組み、リスク許容度λを変えて最適組み合わせを比較。**実生活**: 投資判断の計算フレームワーク（投資助言ではありません） |
 
 ## 無料枠の制限（free tier）
 
@@ -89,7 +90,8 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 ├── examples/        使用例（実行結果・run_id付き）
 ├── assets/          回路図・グラフ図のPNG（examplesから参照）
 ├── scripts/
-│   └── render_diagrams.py  assets/ のPNGを生成するスクリプト
+│   ├── render_diagrams.py      assets/ のPNGを生成するスクリプト
+│   └── fetch_portfolio_data.py 例8用の株価データ取得・QUBO生成スクリプト
 └── docs/
     ├── basics.md              量子コンピューティングの基礎
     ├── applications.md        実生活での応用イメージ
