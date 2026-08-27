@@ -5,11 +5,7 @@
 
 ## 回路
 
-```
-q0: H-*
-      |
-q1: --X
-```
+![Bell state circuit](../assets/01_bell_state.png)
 
 ```json
 {

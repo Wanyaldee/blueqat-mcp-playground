@@ -6,6 +6,8 @@
 ## 問題設定
 
 三角形グラフ（頂点0,1,2、全ての辺がつながっている）の最大カットを求めます。
+![Triangle graph for MaxCut](../assets/04_qaoa_maxcut_graph.png)
+
 辺 `(i,j)` を「カットする」= 頂点 i と j を異なる集合に分ける、をQUBOで表すと、1辺あたり
 
 ```

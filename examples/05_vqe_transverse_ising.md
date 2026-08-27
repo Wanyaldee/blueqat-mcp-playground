@@ -25,6 +25,12 @@ H = Z0 Z1 − X0 − X1
 
 - `layers`: アンザッツの深さ。free tierの上限はQAOAと同じ枠（2）。
 
+`run_vqe` の説明には「RY回転 + CZチェーンを層ごとに繰り返すハードウェア効率的アンザッツ」としか書かれておらず、
+正確な回路構造は非公開ですが、`optimized_params` が6要素（`layers=2, n_qubits=2`）返ってきたことから
+「RY層×3（各層2量子ビット分）とCZ層×2が交互に並ぶ」構造だと逆算できます（下図は検証目的の推定構造）。
+
+![VQE ansatz (inferred)](../assets/05_vqe_ansatz.png)
+
 ## 結果
 
 ```json

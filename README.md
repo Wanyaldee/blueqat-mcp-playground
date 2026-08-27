@@ -7,6 +7,10 @@ MCP (Model Context Protocol) 経由で量子回路シミュレータ・QAOA・VQ
 すべての実行結果には `run_id` が付いており、[verify_run](https://mcp.blueqat.app) で本当に実行されたことを検証できます。
 このリポジトリの例に載せた `run_id` もすべて実際にサーバー上で実行したものです（結果を手で書き換えていません）。
 
+<p align="center">
+  <img src="assets/03_grover_search.png" alt="Grover search circuit" width="70%">
+</p>
+
 ## これは何か
 
 blueqat MCP は、JSON形式のゲートリストで量子回路を記述して投げると、クラウド上のシミュレータ(または実機QPU)で
@@ -77,11 +81,19 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 ├── README.md
 ├── LICENSE
 ├── examples/        使用例（実行結果・run_id付き）
+├── assets/          回路図・グラフ図のPNG（examplesから参照）
+├── scripts/
+│   └── render_diagrams.py  assets/ のPNGを生成するスクリプト
 └── docs/
     ├── gates.md              対応ゲート一覧
     ├── tiers_and_pricing.md  ティア制限と実機課金
     └── hardware.md           実機QPU一覧
 ```
+
+回路図について: `draw_circuit` ツール自体はPNGをチャット表示用に返すだけで生バイト列として保存できないため、
+`assets/` の画像は同じ回路構成を [scripts/render_diagrams.py](scripts/render_diagrams.py)（matplotlib）で
+このリポジトリ用に再描画したものです。ゲート列や実行結果はすべてMCPサーバーから実際に返ってきたものをそのまま
+使用しています。
 
 ## ライセンス
 

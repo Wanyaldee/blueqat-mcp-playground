@@ -32,6 +32,12 @@
 ## 2. draw_circuit（回路図。実行はされない）
 
 `draw_circuit` はPNG画像とテキスト表現の両方を返します。PNGが表示できない環境ではテキスト表現が正になります。
+下の画像は `assets/02_ghz_state.png`（同じ回路構造をこのリポジトリ用に再描画したもの。生成方法は
+[scripts/render_diagrams.py](../scripts/render_diagrams.py)）。
+
+![GHZ state circuit](../assets/02_ghz_state.png)
+
+テキスト表現（`draw_circuit` が実際に返した内容）:
 
 ```
 GHZ state (3 qubits)
