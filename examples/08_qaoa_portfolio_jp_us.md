@@ -46,15 +46,19 @@ Markowitz型のポートフォリオ選択問題をQUBOとして定式化し、`
 ## QUBOの定式化
 
 5銘柄から**ちょうど3銘柄**を均等ウェイト（各1/3）で選ぶ問題として定式化します。
-$x_i \in \{0,1\}$ を銘柄iを選ぶかどうかとして、
+$x_i \in \lbrace 0,1 \rbrace$ を銘柄iを選ぶかどうかとして、
 
 $$
-\min \quad -\sum_i r_i x_i \; + \; \lambda \left[ \sum_i \sigma_{ii} x_i + 2\sum_{i<j} \sigma_{ij} x_i x_j \right] \; + \; P (\textstyle\sum_i x_i - k)^2
+\begin{aligned}
+\min \quad & -\sum_i r_i x_i \\
+& + \lambda \left( \sum_i \sigma_{ii} x_i + 2\sum_{i<j} \sigma_{ij} x_i x_j \right) \\
+& + P \left( \sum_i x_i - k \right)^2
+\end{aligned}
 $$
 
 - 第1項: 選んだ銘柄の期待リターンの合計（大きいほど良いので符号を反転して最小化問題に）
-- 第2項: 選んだ銘柄間の共分散の合計（＝分散、リスク）。$\lambda$ が大きいほどリスクを嫌う
-- 第3項: 「ちょうど$k$銘柄選ぶ」制約をペナルティとして組み込む（$P$ は制約の強さ、$k=3$）
+- 第2項: 選んだ銘柄間の共分散の合計（＝分散、リスク）。 $\lambda$ が大きいほどリスクを嫌う
+- 第3項: 「ちょうど $k$銘柄選ぶ」制約をペナルティとして組み込む（ $P$ は制約の強さ、 $k=3$）
 
 $x_i^2 = x_i$（0/1変数の性質）を使って展開すると、線形項・2次項だけのQUBOになります
 （計15項: 線形5+2次10）。具体的な係数の導出は
