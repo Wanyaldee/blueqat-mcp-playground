@@ -40,6 +40,10 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 
 ゲート名の一覧は `list_gates` ツールで取得できます（`docs/gates.md` に一覧を転記済み）。
 
+初めての人は先に [docs/basics.md](docs/basics.md)（量子コンピューティングの基礎）を読むと、以下の例が
+理解しやすくなります。「結局何の役に立つの？」という人は [docs/applications.md](docs/applications.md)
+（実生活での応用イメージ）へ。
+
 ## 使用例一覧
 
 | # | 例 | 使ったツール | 内容 |
@@ -49,6 +53,8 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 | 3 | [Grover探索](examples/03_grover_search.md) | `run_circuit`, `draw_circuit` | 2量子ビット・1反復のGroverアルゴリズムで100%正解を引く |
 | 4 | [QAOAでMaxCut](examples/04_qaoa_maxcut.md) | `run_qaoa` | 三角形グラフの最大カット問題をQUBOとして解く |
 | 5 | [VQEで横磁場イジング模型](examples/05_vqe_transverse_ising.md) | `run_vqe` | 2量子ビットの横磁場イジング模型の基底エネルギーを変分法で求める |
+| 6 | [量子乱数生成](examples/06_quantum_random_number_generator.md) | `run_circuit` | 棄却サンプリングで公正な6面サイコロを作る。**実生活**: 抽選・ガチャの公正性証明、暗号鍵生成 |
+| 7 | [QAOAで予算ぴったり一致](examples/07_qaoa_budget_matching.md) | `run_qaoa` | 部分和問題をQUBOで解く。**実生活**: 経理の消込、在庫の詰め合わせ |
 
 ## 無料枠の制限（free tier）
 
@@ -85,9 +91,11 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 ├── scripts/
 │   └── render_diagrams.py  assets/ のPNGを生成するスクリプト
 └── docs/
-    ├── gates.md              対応ゲート一覧
-    ├── tiers_and_pricing.md  ティア制限と実機課金
-    └── hardware.md           実機QPU一覧
+    ├── basics.md              量子コンピューティングの基礎
+    ├── applications.md        実生活での応用イメージ
+    ├── gates.md               対応ゲート一覧
+    ├── tiers_and_pricing.md   ティア制限と実機課金
+    └── hardware.md            実機QPU一覧
 ```
 
 回路図について: `draw_circuit` ツール自体はPNGをチャット表示用に返すだけで生バイト列として保存できないため、

@@ -13,10 +13,33 @@ from __future__ import annotations
 import math
 from pathlib import Path
 
+import urllib.request
+
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyBboxPatch
 
 ASSETS = Path(__file__).resolve().parent.parent / "assets"
+
+_FONT_CACHE_DIR = Path(__file__).resolve().parent / ".fonts_cache"
+_JP_FONT = _FONT_CACHE_DIR / "NotoSansJP.ttf"
+_JP_FONT_URL = "https://github.com/google/fonts/raw/main/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf"
+
+
+def _ensure_jp_font():
+    """日本語ラベルを描画するため、初回実行時だけNoto Sans JPを取得してキャッシュする。"""
+    if not _JP_FONT.exists():
+        _FONT_CACHE_DIR.mkdir(exist_ok=True)
+        try:
+            urllib.request.urlretrieve(_JP_FONT_URL, _JP_FONT)
+        except OSError as e:
+            print(f"warning: could not fetch Noto Sans JP ({e}); Japanese labels may not render")
+            return
+    fm.fontManager.addfont(str(_JP_FONT))
+    plt.rcParams["font.family"] = fm.FontProperties(fname=str(_JP_FONT)).get_name()
+
+
+_ensure_jp_font()
 
 WIRE_COLOR = "#8a8478"
 BOX_EDGE = "#2b2b2b"
@@ -122,6 +145,104 @@ def draw_triangle_graph(out_path):
     print(f"wrote {out_path}")
 
 
+SEQ_BLUE = "#2a78d6"
+MUTED_GRAY = "#c3c2b7"
+GRIDLINE = "#e1e0d9"
+BASELINE = "#c3c2b7"
+INK_PRIMARY = "#0b0b0b"
+INK_SECONDARY = "#52514e"
+INK_MUTED = "#898781"
+SURFACE = "#fcfcfb"
+
+
+def draw_qrng_histogram(counts, shots, out_path, title):
+    """counts: {"000": 33, ...} 8通りの3bit出力の頻度。dataviz skillのパレットに準拠。"""
+    labels = sorted(counts.keys())
+    values = [counts[k] for k in labels]
+    expected = shots / len(labels)
+
+    fig, ax = plt.subplots(figsize=(6.4, 4.0))
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+
+    ax.set_axisbelow(True)
+    ax.yaxis.grid(True, color=GRIDLINE, lw=1.0, zorder=0)
+    for spine in ("top", "right", "left"):
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(BASELINE)
+
+    x = range(len(labels))
+    bars = ax.bar(x, values, width=0.6, color=SEQ_BLUE, zorder=3)
+    for rect, v in zip(bars, values):
+        ax.text(rect.get_x() + rect.get_width() / 2, v + max(values) * 0.02, str(v),
+                 ha="center", va="bottom", fontsize=9.5, color=INK_SECONDARY)
+
+    ax.axhline(expected, color=INK_MUTED, lw=1.4, ls=(0, (4, 3)), zorder=2)
+    ax.text(len(labels) - 0.4, expected + max(values) * 0.02,
+             f"期待値(一様分布) {expected:.0f}", ha="right", va="bottom",
+             fontsize=9.5, color=INK_MUTED)
+
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(labels, fontsize=10, color=INK_SECONDARY, family="monospace")
+    ax.set_ylabel(f"count (shots={shots})", fontsize=10, color=INK_SECONDARY)
+    ax.set_title(title, fontsize=12, color=INK_PRIMARY, pad=12)
+    ax.tick_params(axis="y", colors=INK_MUTED, labelsize=9)
+    ax.tick_params(axis="x", length=0)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=180, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out_path}")
+
+
+def draw_budget_items(costs, selected, target, out_path, title):
+    """costs: [int,...], selected: 選択された案件のindex集合, target: 目標予算"""
+    labels = [f"item{i}\n(¥{c})" for i, c in enumerate(costs)]
+
+    fig, ax = plt.subplots(figsize=(5.6, 4.0))
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+
+    ax.set_axisbelow(True)
+    ax.yaxis.grid(True, color=GRIDLINE, lw=1.0, zorder=0)
+    for spine in ("top", "right", "left"):
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(BASELINE)
+
+    x = range(len(costs))
+    colors = [SEQ_BLUE if i in selected else MUTED_GRAY for i in range(len(costs))]
+    bars = ax.bar(x, costs, width=0.55, color=colors, zorder=3)
+    for rect, c in zip(bars, costs):
+        ax.text(rect.get_x() + rect.get_width() / 2, c + max(costs) * 0.02, f"¥{c}",
+                 ha="center", va="bottom", fontsize=9.5, color=INK_SECONDARY)
+
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(labels, fontsize=9.5, color=INK_SECONDARY)
+    ax.set_ylabel("cost", fontsize=10, color=INK_SECONDARY)
+    ax.tick_params(axis="y", colors=INK_MUTED, labelsize=9)
+    ax.tick_params(axis="x", length=0)
+
+    selected_sum = sum(costs[i] for i in selected)
+    ax.set_title(title, fontsize=12, color=INK_PRIMARY, pad=28)
+    ax.text(0.5, 1.04, f"選択合計 = {selected_sum}（目標予算 {target} と一致）",
+             transform=ax.transAxes, ha="center", va="bottom", fontsize=10, color=INK_SECONDARY)
+
+    ax.set_ylim(0, max(costs) * 1.28)
+
+    from matplotlib.patches import Patch
+    legend_handles = [
+        Patch(facecolor=SEQ_BLUE, label="選択"),
+        Patch(facecolor=MUTED_GRAY, label="非選択"),
+    ]
+    ax.legend(handles=legend_handles, loc="upper left", frameon=False, fontsize=9.5,
+               labelcolor=INK_SECONDARY)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=180, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out_path}")
+
+
 def main():
     ASSETS.mkdir(exist_ok=True)
 
@@ -179,6 +300,21 @@ def main():
         n_qubits=2,
         title="VQE ansatz (hardware-efficient, layers=2) -- inferred structure",
         out_path=ASSETS / "05_vqe_ansatz.png",
+    )
+
+    draw_qrng_histogram(
+        counts={"110": 30, "001": 32, "011": 40, "111": 24, "000": 33, "010": 35, "100": 33, "101": 29},
+        shots=256,
+        out_path=ASSETS / "06_qrng_histogram.png",
+        title="3-qubit QRNG: 256 shots (run_id sim_20260827_59a1bc6b732e54fa)",
+    )
+
+    draw_budget_items(
+        costs=[2, 3, 5, 7],
+        selected={0, 1, 2},
+        target=10,
+        out_path=ASSETS / "07_budget_items.png",
+        title="Budget matching QUBO: selected subset",
     )
 
 
