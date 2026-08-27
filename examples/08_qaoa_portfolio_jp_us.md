@@ -49,7 +49,7 @@ Markowitz型のポートフォリオ選択問題をQUBOとして定式化し、`
 $x_i \in \lbrace 0,1 \rbrace$ を銘柄iを選ぶかどうかとして、
 
 $$
-\min \quad -\sum_i r_i x_i + \lambda \left( \sum_i \sigma_{ii} x_i + 2\sum_{i<j} \sigma_{ij} x_i x_j \right) + P \left( \sum_i x_i - k \right)^2
+\min \quad -\sum_i r_i x_i + \lambda \left( \sum_i \sigma_{ii} x_i + 2\sum_{i \lt j} \sigma_{ij} x_i x_j \right) + P \left( \sum_i x_i - k \right)^2
 $$
 
 - 第1項: 選んだ銘柄の期待リターンの合計（大きいほど良いので符号を反転して最小化問題に）
