@@ -291,6 +291,53 @@ def draw_feature_relevance(features, relevance, selected, out_path, title):
 CAT_ORANGE = "#eb6834"
 
 
+def draw_bb84_error_rates(trials, out_path, title):
+    """trials: [{"label": str, "error_rate": float, "eve_matched": bool}, ...]"""
+    labels = [t["label"] for t in trials]
+    values = [t["error_rate"] * 100 for t in trials]
+    colors = [SEQ_BLUE if t["eve_matched"] else CAT_ORANGE for t in trials]
+
+    fig, ax = plt.subplots(figsize=(7.2, 4.2))
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+
+    ax.set_axisbelow(True)
+    ax.yaxis.grid(True, color=GRIDLINE, lw=1.0, zorder=0)
+    for spine in ("top", "right", "left"):
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(BASELINE)
+
+    x = range(len(labels))
+    bars = ax.bar(x, values, width=0.6, color=colors, zorder=3)
+    for rect, v in zip(bars, values):
+        ax.text(rect.get_x() + rect.get_width() / 2, v + 2, f"{v:.0f}%",
+                 ha="center", va="bottom", fontsize=9, color=INK_SECONDARY)
+
+    ax.axhline(25, color=INK_MUTED, lw=1.4, ls=(0, (4, 3)), zorder=2)
+    ax.text(len(labels) - 0.4, 27, "理論値 25%（基底不一致時の平均）",
+             ha="right", va="bottom", fontsize=9, color=INK_MUTED)
+
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(labels, fontsize=8.5, color=INK_SECONDARY, rotation=30, ha="right")
+    ax.set_ylabel("Bobの誤り率（256ショット中）", fontsize=10, color=INK_SECONDARY)
+    ax.set_ylim(0, 65)
+    ax.set_title(title, fontsize=12, color=INK_PRIMARY, pad=12)
+    ax.tick_params(axis="y", colors=INK_MUTED, labelsize=9)
+    ax.tick_params(axis="x", length=0)
+
+    from matplotlib.patches import Patch
+    legend_handles = [
+        Patch(facecolor=SEQ_BLUE, label="Eveの基底が一致"),
+        Patch(facecolor=CAT_ORANGE, label="Eveの基底が不一致"),
+    ]
+    ax.legend(handles=legend_handles, loc="upper left", frameon=False, fontsize=9, labelcolor=INK_SECONDARY)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=180, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out_path}")
+
+
 def draw_return_risk_scatter(assets, out_path, title):
     """assets: [{"label": str, "market": "JP"|"US", "ret": float, "vol": float}, ...]"""
     fig, ax = plt.subplots(figsize=(5.8, 4.6))
@@ -416,6 +463,38 @@ def main():
         ],
         out_path=ASSETS / "08_portfolio_return_risk.png",
         title="JP+US basket: annualized return vs. volatility (1y, USD-adjusted)",
+    )
+
+    draw_circuit(
+        gates=[
+            {"gate": "h", "qubits": [0]}, {"gate": "h", "qubits": [1]}, {"gate": "h", "qubits": [2]},
+            {"gate": "x", "qubits": [1]}, {"gate": "ccz", "qubits": [0, 1, 2]}, {"gate": "x", "qubits": [1]},
+            {"gate": "h", "qubits": [0]}, {"gate": "h", "qubits": [1]}, {"gate": "h", "qubits": [2]},
+            {"gate": "x", "qubits": [0]}, {"gate": "x", "qubits": [1]}, {"gate": "x", "qubits": [2]},
+            {"gate": "ccz", "qubits": [0, 1, 2]},
+            {"gate": "x", "qubits": [0]}, {"gate": "x", "qubits": [1]}, {"gate": "x", "qubits": [2]},
+            {"gate": "h", "qubits": [0]}, {"gate": "h", "qubits": [1]}, {"gate": "h", "qubits": [2]},
+        ],
+        n_qubits=3,
+        title="Grover key search (target |101>, 1 of 2 iterations shown)",
+        out_path=ASSETS / "10_grover_key_search.png",
+    )
+
+    draw_bb84_error_rates(
+        trials=[
+            {"label": "A-0 (X/Z)", "error_rate": 0.508, "eve_matched": False},
+            {"label": "A-1 (X/Z)", "error_rate": 0.504, "eve_matched": False},
+            {"label": "A-2 (Z/Z)", "error_rate": 0.000, "eve_matched": True},
+            {"label": "A-3 (X/Z)", "error_rate": 0.504, "eve_matched": False},
+            {"label": "A-4 (X/X)", "error_rate": 0.000, "eve_matched": True},
+            {"label": "B-0 (X/X)", "error_rate": 0.000, "eve_matched": True},
+            {"label": "B-1 (Z/Z)", "error_rate": 0.000, "eve_matched": True},
+            {"label": "B-2 (X/Z)", "error_rate": 0.562, "eve_matched": False},
+            {"label": "B-3 (X/Z)", "error_rate": 0.523, "eve_matched": False},
+            {"label": "B-4 (Z/Z)", "error_rate": 0.000, "eve_matched": True},
+        ],
+        out_path=ASSETS / "11_bb84_error_rates.png",
+        title="BB84 with Eve: per-trial error rate (Aliceの基底/Eveの基底)",
     )
 
     draw_feature_relevance(

@@ -60,6 +60,8 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 | 7 | [QAOAで予算ぴったり一致](examples/07_qaoa_budget_matching.md) | `run_qaoa` | 部分和問題をQUBOで解く。**実生活**: 経理の消込、在庫の詰め合わせ |
 | 8 | [QAOAで日米株ポートフォリオ選定](examples/08_qaoa_portfolio_jp_us.md) | `run_qaoa` | 実際の日米株価データ(yfinance)からMarkowitz型の銘柄選択QUBOを組み、リスク許容度λを変えて最適組み合わせを比較。**実生活**: 投資判断の計算フレームワーク（投資助言ではありません） |
 | 9 | [QAOAでAI学習の特徴量選択](examples/09_qaoa_feature_selection.md) | `run_qaoa` | 乳がん診断データセットでmRMR型（関連度は高く・冗長でない）の特徴量選択QUBOを組み、SelectKBest等の古典手法とテスト精度を正面から比較。**実生活**: AIモデル学習の前処理（次元削減・過学習抑制） |
+| 10 | [Grover探索でトイ暗号の鍵を復元](examples/10_grover_key_search.md) | `run_circuit`, `draw_circuit` | 3量子ビット・2反復のGrover探索で3bit鍵（候補8通り）を95.3%の確率で復元。**実生活**: 対称鍵暗号の量子耐性・鍵長設計（実在の暗号への攻撃ではありません） |
+| 11 | [BB84量子鍵配送](examples/11_bb84_quantum_key_distribution.md) | `run_circuit` | アンシラ量子ビットで盗聴者Eveを表現し、盗聴の有無でBobの誤り率が0%→約26%（理論値25%）に変わることを確認。**実生活**: 盗聴を物理法則で検知できる高セキュリティ通信（実際の秘密鍵配送には使用できません） |
 
 ## 無料枠の制限（free tier）
 
@@ -114,8 +116,10 @@ claude plugin install blueqat-mcp-playground@blueqat-mcp-playground
 ├── examples/        使用例（実行結果・run_id付き）
 ├── assets/          回路図・グラフ図のPNG（examplesから参照）
 ├── scripts/
-│   ├── render_diagrams.py      assets/ のPNGを生成するスクリプト
-│   └── fetch_portfolio_data.py 例8用の株価データ取得・QUBO生成スクリプト
+│   ├── render_diagrams.py             assets/ のPNGを生成するスクリプト
+│   ├── fetch_portfolio_data.py        例8用の株価データ取得・QUBO生成スクリプト
+│   ├── build_feature_selection_qubo.py 例9用の特徴量選択QUBO生成スクリプト
+│   └── build_bb84_circuit.py          例11用のBB84回路生成スクリプト
 └── docs/
     ├── basics.md              量子コンピューティングの基礎
     ├── applications.md        実生活での応用イメージ

@@ -30,7 +30,7 @@ scikit-learn 標準搭載の[乳がん診断データセット](https://scikit-l
 $x_i \in \lbrace 0,1 \rbrace$ を特徴量 $i$ を選ぶかどうかとして、
 
 $$
-\min \quad -\alpha \sum_i r_i x_i + \beta \sum_{(i,j) \in E} c_{ij}\, x_i x_j
+\min \quad -\alpha \sum_i r_i x_i + \beta \sum_{(i,j) \in E} c_{ij} x_i x_j
 $$
 
 - $r_i$: 目的変数（良性/悪性）との relevance（ANOVA F値を最大値で正規化、0〜1）

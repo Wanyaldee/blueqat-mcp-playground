@@ -22,15 +22,16 @@ but not sufficient.
   /markdown` but not on the actual repository page.
 - Symptoms: inline math shown as raw `$...$` text with no rendering; a
   `\begin{aligned}` block throwing "Extra open brace or missing close
-  brace"; braces or `;` vanishing from the rendered formula; a sum/product
-  with a `<`/`>` in the subscript rendering broken or not at all.
+  brace"; braces, `;`, or `,` vanishing from the rendered formula; the tail
+  of a formula silently missing (a `\%` swallowed as a comment marker); a
+  sum/product with a `<`/`>` in the subscript rendering broken or not at all.
 
 ## The Four Gotchas
 
 | Symptom | Cause | Fix |
 |---|---|---|
 | `$...$` shown as literal text, no error | GitHub only recognizes an opening `$` when preceded by start-of-line, whitespace, or `(`. Any other preceding character — including full-width/CJK punctuation like `（`, `、`, `。`, `「` — leaves it untouched. | Insert a space before the `$` (`価格は $x$` not `価格は$x$`). |
-| `\{`, `\}`, `\;` disappear; bare `{}` swallows set notation | CommonMark's backslash-escape rule strips the backslash off any `\<ASCII punctuation>` in ordinary text *before* it reaches the math renderer, so `\{` arrives as bare `{}` (an empty group, not a literal brace) and `\;` arrives as bare `;`. `\\` is unaffected — this is not a blanket problem. | Use `\lbrace` / `\rbrace` instead of `\{` / `\}`. Drop `\;` spacing (it becomes pointless anyway). |
+| `\{`, `\}`, `\;`, `\,`, `\%` (any `\<ASCII punctuation>`) silently lose their backslash | CommonMark's backslash-escape rule strips the backslash off any `\<ASCII punctuation>` in ordinary text *before* it reaches the math renderer. `\{`/`\}` arrive as bare `{}` (an empty group, not a literal brace); `\;`/`\,` (spacing commands) arrive as bare `;`/`,` (stray punctuation instead of a space); **`\%` arrives as a bare `%`, which MathJax/TeX treats as a comment marker — everything after it on that line is silently dropped, breaking the rest of the formula, not just the percent sign.** `\\` is unaffected — this is not a blanket problem, only single-punctuation escapes. | Use `\lbrace` / `\rbrace` instead of `\{` / `\}`. Drop `\;`/`\,` spacing (it becomes pointless anyway — a plain space or nothing works fine). Never write a literal `%` inside `$...$` math — move percentages outside math mode as plain text (`理論値25%` not `$25\%$`), or use a decimal (`0.25`) inside math instead. |
 | `\begin{aligned}...\end{aligned}` throws "Extra open brace or missing close brace" only in repo files | This align environment is broken specifically in GitHub's **blob-rendered** `.md` files (it works fine in issue/PR comments), even though it parses correctly under vanilla KaTeX/MathJax locally — see mathjax/MathJax#2274. | Don't use `\begin{aligned}`/`\begin{align}` in repo markdown. Write the formula as a single line without `\\` line breaks. |
 | `\sum_{i<j}` (or any bare `<`/`>` inside math) breaks only on the live github.com page | A literal `<`/`>` inside math breaks GitHub's actual client-side MathJax rendering, despite parsing fine under standalone mathjax-full/KaTeX *and* the generic `/markdown` API — this is specific to GitHub's client-side rendering path, not a general MathJax/KaTeX bug. | Use `\lt` / `\gt` instead of the literal character: `\sum_{i \lt j}`. |
 
