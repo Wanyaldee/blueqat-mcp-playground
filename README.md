@@ -59,6 +59,7 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 | 6 | [量子乱数生成](examples/06_quantum_random_number_generator.md) | `run_circuit` | 棄却サンプリングで公正な6面サイコロを作る。**実生活**: 抽選・ガチャの公正性証明、暗号鍵生成 |
 | 7 | [QAOAで予算ぴったり一致](examples/07_qaoa_budget_matching.md) | `run_qaoa` | 部分和問題をQUBOで解く。**実生活**: 経理の消込、在庫の詰め合わせ |
 | 8 | [QAOAで日米株ポートフォリオ選定](examples/08_qaoa_portfolio_jp_us.md) | `run_qaoa` | 実際の日米株価データ(yfinance)からMarkowitz型の銘柄選択QUBOを組み、リスク許容度λを変えて最適組み合わせを比較。**実生活**: 投資判断の計算フレームワーク（投資助言ではありません） |
+| 9 | [QAOAでAI学習の特徴量選択](examples/09_qaoa_feature_selection.md) | `run_qaoa` | 乳がん診断データセットでmRMR型（関連度は高く・冗長でない）の特徴量選択QUBOを組み、SelectKBest等の古典手法とテスト精度を正面から比較。**実生活**: AIモデル学習の前処理（次元削減・過学習抑制） |
 
 ## 無料枠の制限（free tier）
 

@@ -23,6 +23,10 @@
 freeティアで実際に踏んだ制約:
 - `run_qaoa` に `n_starts: 3` を渡すと `CircuitBuildError: n_starts must be an integer between 1 and 2 on the free tier`
   で拒否される（[例4](../examples/04_qaoa_maxcut.md)参照）。上限ぴったりの`2`は通る。
+- `run_qaoa` の `qubo` は**項数が20まで**（上の表には出てこない）。55項（線形10+2次45）を渡すと
+  `CircuitBuildError: too many qubo terms (max 20 on the free tier)` で拒否される
+  （[例9](../examples/09_qaoa_feature_selection.md)参照）。候補変数が増えるほど2次項がC(n,2)で
+  増えるため、この上限にすぐ当たる。
 
 ## 実機課金（`get_pricing`）
 

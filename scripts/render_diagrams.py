@@ -243,6 +243,51 @@ def draw_budget_items(costs, selected, target, out_path, title):
     print(f"wrote {out_path}")
 
 
+def draw_feature_relevance(features, relevance, selected, out_path, title):
+    """features: [str,...], relevance: [float,...] (0-1に正規化済み), selected: 選択されたindex集合"""
+    order = sorted(range(len(features)), key=lambda i: relevance[i])
+    labels = [features[i] for i in order]
+    values = [relevance[i] for i in order]
+    colors = [SEQ_BLUE if i in selected else MUTED_GRAY for i in order]
+
+    fig, ax = plt.subplots(figsize=(6.4, 4.4))
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+
+    ax.set_axisbelow(True)
+    ax.xaxis.grid(True, color=GRIDLINE, lw=1.0, zorder=0)
+    for spine in ("top", "right", "left"):
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(BASELINE)
+
+    y = range(len(labels))
+    bars = ax.barh(y, values, height=0.6, color=colors, zorder=3)
+    for rect, v in zip(bars, values):
+        ax.text(v + 0.015, rect.get_y() + rect.get_height() / 2, f"{v:.2f}",
+                 ha="left", va="center", fontsize=9, color=INK_SECONDARY)
+
+    ax.set_yticks(list(y))
+    ax.set_yticklabels(labels, fontsize=9.5, color=INK_SECONDARY)
+    ax.set_xlabel("relevance (normalized F-value)", fontsize=10, color=INK_SECONDARY)
+    ax.set_xlim(0, 1.15)
+    ax.set_title(title, fontsize=12, color=INK_PRIMARY, pad=12)
+    ax.tick_params(axis="x", colors=INK_MUTED, labelsize=9)
+    ax.tick_params(axis="y", length=0)
+
+    from matplotlib.patches import Patch
+    legend_handles = [
+        Patch(facecolor=SEQ_BLUE, label="QUBO選択"),
+        Patch(facecolor=MUTED_GRAY, label="非選択（冗長 or 低関連度）"),
+    ]
+    ax.legend(handles=legend_handles, loc="lower right", frameon=False, fontsize=9.5,
+               labelcolor=INK_SECONDARY)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=180, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out_path}")
+
+
 CAT_ORANGE = "#eb6834"
 
 
@@ -371,6 +416,18 @@ def main():
         ],
         out_path=ASSETS / "08_portfolio_return_risk.png",
         title="JP+US basket: annualized return vs. volatility (1y, USD-adjusted)",
+    )
+
+    draw_feature_relevance(
+        features=[
+            "mean radius", "mean texture", "mean perimeter", "mean area",
+            "mean smoothness", "mean compactness", "mean concavity",
+            "mean concave points", "mean symmetry", "mean fractal dimension",
+        ],
+        relevance=[0.7169, 0.1041, 0.7729, 0.6144, 0.1037, 0.3666, 0.6828, 1.0, 0.081, 0.0],
+        selected={1, 2, 4, 6, 8, 9},
+        out_path=ASSETS / "09_feature_selection.png",
+        title="QUBO feature selection (breast cancer, mean_* features)",
     )
 
 
