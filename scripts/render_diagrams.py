@@ -338,6 +338,40 @@ def draw_bb84_error_rates(trials, out_path, title):
     print(f"wrote {out_path}")
 
 
+GOOD_GREEN = "#2f9e64"
+
+
+def draw_h2_potential_curve(bond_lengths, hf, fci, vqe, out_path, title):
+    """bond_lengths/hf/fci/vqe: 同じ長さのfloatリスト"""
+    fig, ax = plt.subplots(figsize=(6.6, 4.6))
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+
+    ax.set_axisbelow(True)
+    ax.grid(True, color=GRIDLINE, lw=1.0, zorder=0)
+    for spine in ("top", "right"):
+        ax.spines[spine].set_visible(False)
+    for spine in ("left", "bottom"):
+        ax.spines[spine].set_color(BASELINE)
+
+    ax.plot(bond_lengths, fci, color=INK_PRIMARY, lw=2.0, marker="o", ms=5, zorder=4, label="FCI（厳密解）")
+    ax.plot(bond_lengths, hf, color=MUTED_GRAY, lw=1.6, ls=(0, (4, 3)), marker="s", ms=4.5, zorder=3, label="HF（平均場近似）")
+    ax.plot(bond_lengths, vqe, color=SEQ_BLUE, lw=1.6, marker="^", ms=5.5, zorder=5, label="VQE（layers=2）")
+
+    ax.set_xlabel("H-H 結合長（Å）", fontsize=10, color=INK_SECONDARY)
+    ax.set_ylabel("エネルギー（Hartree）", fontsize=10, color=INK_SECONDARY)
+    ax.set_title(title, fontsize=12, color=INK_PRIMARY, pad=12)
+    ax.tick_params(colors=INK_MUTED, labelsize=9)
+    legend = ax.legend(loc="lower right", frameon=True, fontsize=9.5, labelcolor=INK_SECONDARY,
+                         facecolor=SURFACE, edgecolor=BASELINE, framealpha=1.0)
+    legend.get_frame().set_linewidth(1.0)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=180, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out_path}")
+
+
 def draw_return_risk_scatter(assets, out_path, title):
     """assets: [{"label": str, "market": "JP"|"US", "ret": float, "vol": float}, ...]"""
     fig, ax = plt.subplots(figsize=(5.8, 4.6))
@@ -507,6 +541,15 @@ def main():
         selected={1, 2, 4, 6, 8, 9},
         out_path=ASSETS / "09_feature_selection.png",
         title="QUBO feature selection (breast cancer, mean_* features)",
+    )
+
+    draw_h2_potential_curve(
+        bond_lengths=[0.3, 0.5, 0.7414, 1.0, 1.5, 2.0, 2.5],
+        hf=[-0.593828, -1.042996, -1.116684, -1.066109, -0.910874, -0.783793, -0.702944],
+        fci=[-0.601804, -1.055160, -1.137270, -1.101150, -0.998149, -0.948641, -0.936055],
+        vqe=[-0.594490, -1.054792, -1.137270, -1.101146, -0.890585, -0.924536, -0.931634],
+        out_path=ASSETS / "12_h2_potential_curve.png",
+        title="H2 (STO-3G) potential energy curve: VQE vs. FCI vs. HF",
     )
 
 
