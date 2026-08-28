@@ -1,0 +1,18 @@
+{
+  "name": "blueqat-mcp-playground",
+  "description": "Skills distilled from building the blueqat MCP quantum-computing playground: GitHub Markdown math-rendering fixes and a blueqat MCP usage/evaluation guide.",
+  "owner": {
+    "name": "Wanyaldee"
+  },
+  "plugins": [
+    {
+      "name": "blueqat-mcp-playground",
+      "source": "./",
+      "description": "GitHub Markdown math-rendering gotchas and a blueqat MCP usage/evaluation skill, learned building this repo.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Wanyaldee"
+      }
+    }
+  ]
+}

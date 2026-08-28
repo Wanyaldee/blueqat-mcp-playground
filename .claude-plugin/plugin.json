@@ -1,0 +1,21 @@
+{
+  "name": "blueqat-mcp-playground",
+  "description": "Lessons learned building this blueqat MCP quantum-computing playground: GitHub-flavored Markdown math rendering fixes for GitHub's blob-view MathJax, and a workflow/evaluation guide for the blueqat MCP tools (which tool fits which problem, safe hardware-job sequencing, and honest quantum-vs-classical advantage checks).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wanyaldee"
+  },
+  "homepage": "https://github.com/Wanyaldee/blueqat-mcp-playground",
+  "repository": "https://github.com/Wanyaldee/blueqat-mcp-playground",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "quantum-computing",
+    "blueqat",
+    "mcp",
+    "markdown",
+    "github",
+    "katex",
+    "mathjax"
+  ]
+}

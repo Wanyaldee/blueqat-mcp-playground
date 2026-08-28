@@ -44,6 +44,9 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 理解しやすくなります。「結局何の役に立つの？」という人は [docs/applications.md](docs/applications.md)
 （実生活での応用イメージ）へ。
 
+（業務での採用を検討している場合は [docs/when_to_use_quantum.md](docs/when_to_use_quantum.md)
+「量子より枯れた技術のほうが優れているかもしれない話」も）
+
 ## 使用例一覧
 
 | # | 例 | 使ったツール | 内容 |
@@ -81,6 +84,26 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 - **OQC Toshiko Tokyo-1**（日本リージョン、32量子ビット、実機）
 - **Lucy Simulator**（英国リージョン、8量子ビット、常時稼働のホステッドシミュレータ）
 
+## AIエージェント向けスキル
+
+このリポジトリを作る過程で得た知見は、Claude Code をはじめとする AI エージェントが直接扱えるよう
+`skills/` 以下に**スキル**としてもまとめています。
+
+- [`github-markdown-math-rendering`](skills/github-markdown-math-rendering/SKILL.md) — GitHubのMarkdown上で
+  LaTeX数式（$...$ / $$...$$）を書くときの、GitHub側MathJaxレンダラー特有の落とし穴と直し方
+- [`using-blueqat-mcp`](skills/using-blueqat-mcp/SKILL.md) — blueqat MCPのツール群をどう使い分けるか、
+  実機投入前の安全な確認手順、そして「量子が本当に古典より優れているか」を安易に主張しないための評価軸
+  （[docs/when_to_use_quantum.md](docs/when_to_use_quantum.md)の内容をエージェント向けに凝縮したもの）
+
+このリポジトリを clone してそのまま作業する場合は `.claude/skills/` / `.agents/skills/`
+（`skills/`へのシンボリックリンク）から自動的に読み込まれます。他のリポジトリ・他の環境から
+マーケットプレイス経由で導入することもできます。
+
+```
+claude plugin marketplace add Wanyaldee/blueqat-mcp-playground
+claude plugin install blueqat-mcp-playground@blueqat-mcp-playground
+```
+
 ## リポジトリ構成
 
 ```
@@ -97,7 +120,8 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
     ├── applications.md        実生活での応用イメージ
     ├── gates.md               対応ゲート一覧
     ├── tiers_and_pricing.md   ティア制限と実機課金
-    └── hardware.md            実機QPU一覧
+    ├── hardware.md            実機QPU一覧
+    └── when_to_use_quantum.md 業務採用を検討する人向け（枯れた技術との比較）
 ```
 
 回路図について: `draw_circuit` ツール自体はPNGをチャット表示用に返すだけで生バイト列として保存できないため、
