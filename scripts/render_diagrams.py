@@ -543,6 +543,20 @@ def main():
         title="QUBO feature selection (breast cancer, mean_* features)",
     )
 
+    draw_circuit(
+        gates=[
+            {"gate": "h", "qubits": [0]},
+            {"gate": "cx", "qubits": [0, 1]},
+            {"gate": "z", "qubits": [0], "label": "Z\n(msg)"},
+            {"gate": "cx", "qubits": [0, 1]},
+            {"gate": "h", "qubits": [0]},
+        ],
+        n_qubits=2,
+        title="Superdense coding (encode gate on q0 varies by message)",
+        out_path=ASSETS / "13_superdense_coding.png",
+        qubit_labels=["q0 (Alice->Bob)", "q1 (Bob)"],
+    )
+
     draw_h2_potential_curve(
         bond_lengths=[0.3, 0.5, 0.7414, 1.0, 1.5, 2.0, 2.5],
         hf=[-0.593828, -1.042996, -1.116684, -1.066109, -0.910874, -0.783793, -0.702944],

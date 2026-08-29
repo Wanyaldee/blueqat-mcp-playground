@@ -63,6 +63,7 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 | 10 | [Grover探索でトイ暗号の鍵を復元](examples/10_grover_key_search.md) | `run_circuit`, `draw_circuit` | 3量子ビット・2反復のGrover探索で3bit鍵（候補8通り）を95.3%の確率で復元。**実生活**: 対称鍵暗号の量子耐性・鍵長設計（実在の暗号への攻撃ではありません） |
 | 11 | [BB84量子鍵配送](examples/11_bb84_quantum_key_distribution.md) | `run_circuit` | アンシラ量子ビットで盗聴者Eveを表現し、盗聴の有無でBobの誤り率が0%→約26%（理論値25%）に変わることを確認。**実生活**: 盗聴を物理法則で検知できる高セキュリティ通信（実際の秘密鍵配送には使用できません） |
 | 12 | [VQEで水素分子(H2)の基底エネルギー](examples/12_vqe_h2_molecule.md) | `run_vqe` | PySCF/OpenFermionで実際の分子ハミルトニアンを生成し、ポテンシャルエネルギー曲線をFCI/HFと比較。平衡結合長ではFCIと完全一致、1.5Åでは局所解にはまった実例も正直に報告。**実生活**: 創薬・触媒設計・電池材料シミュレーションの入り口 |
+| 13 | [スーパーデンスコーディング](examples/13_superdense_coding.md) | `run_circuit`, `draw_circuit` | ベル対を事前共有し、Aliceが1量子ビットにゲート(I/X/Z/XZ)をかけて送るだけで2古典ビット(00/01/10/11)をBobに伝送。4パターン全て100%で正しく復号（決定論的回路）。**実生活**: 量子ネットワーク・量子テレポーテーションと対になる基礎プロトコル |
 
 ## 無料枠の制限（free tier）
 
