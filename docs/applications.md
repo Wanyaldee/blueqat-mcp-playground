@@ -10,7 +10,7 @@
 |---|---|---|---|
 | 量子乱数生成（QRNG） | 物理法則に基づく「真の」乱数生成 | 暗号鍵生成、公正な抽選・ガチャ、モンテカルロ・シミュレーション、乱数監査 | [例6](../examples/06_quantum_random_number_generator.md) |
 | Grover探索 | 未整列データからの高速探索（理論上 $\sqrt{N}$ 倍） | データベース検索、SAT/制約充足問題、暗号解析（対称鍵の鍵長設計にも影響） | [例3](../examples/03_grover_search.md), [例10](../examples/10_grover_key_search.md) |
-| QAOA（組合せ最適化） | 「〇〇の組み合わせの中から最良を選ぶ」問題 | 物流の配送ルート、金融ポートフォリオ、経理の消込・按分、シフト/リソース割当、通信の周波数割当、AIモデル学習の特徴量選択 | [例4](../examples/04_qaoa_maxcut.md), [例7](../examples/07_qaoa_budget_matching.md), [例8](../examples/08_qaoa_portfolio_jp_us.md), [例9](../examples/09_qaoa_feature_selection.md) |
+| QAOA（組合せ最適化） | 「〇〇の組み合わせの中から最良を選ぶ」問題 | 物流の配送ルート、金融ポートフォリオ、経理の消込・按分、シフト/リソース割当、通信の周波数割当、AIモデル学習の特徴量選択 | [例4](../examples/04_qaoa_maxcut.md), [例7](../examples/07_qaoa_budget_matching.md), [例8](../examples/08_qaoa_portfolio_jp_us.md), [例9](../examples/09_qaoa_feature_selection.md), [例14〜19](workshop.md#例の一覧とそれぞれで伝えること)（チーム分け・当番・出店・会議・実験計画・査読割当） |
 | VQE（基底エネルギー探索） | 系の最も安定な状態（エネルギー最小）を求める | 分子・材料のシミュレーション（創薬、触媒設計、電池材料）、物性物理 | [例5](../examples/05_vqe_transverse_ising.md), [例12](../examples/12_vqe_h2_molecule.md) |
 | 量子鍵配送（QKD, 例: BB84） | 盗聴を物理法則で統計的に検知できる鍵交換 | 高セキュリティ通信（政府・金融機関の専用回線）、将来の耐量子通信インフラ | [例11](../examples/11_bb84_quantum_key_distribution.md) |
 
@@ -54,6 +54,12 @@ Groverアルゴリズムは理論上 $\sqrt{N}$ 回程度に減らせます。[�
   選ぶ特徴量選択も同じQUBOの形に落とし込めます。[例9](../examples/09_qaoa_feature_selection.md)では
   乳がん診断データセットでmRMR型の特徴量選択QUBOを組み、SelectKBestなど古典的な特徴量選択とテスト
   精度を正面から比較しています。
+- **身近な題材（ワークショップ向け）**: チーム分け（[例14](../examples/14_team_split.md)）、
+  週末当番（[例15](../examples/15_weekend_shift.md)）、出店候補地（[例16](../examples/16_store_location.md)）、
+  会議の調整（[例17](../examples/17_meeting_schedule.md)）、実験条件の選定（[例18](../examples/18_experiment_screening.md)）、
+  査読担当の割当（[例19](../examples/19_reviewer_assignment.md)）。どれも古典的な方法で一瞬で解ける規模で、
+  直感（貪欲法）が外れる例・QAOAが最適解を外す例・素朴な方法で十分な例をあえて含めています。
+  進行ガイドは [workshop.md](workshop.md) を参照してください。
 
 QAOAはこうした問題をパラメータ付き量子回路 + 古典最適化のハイブリッドで近似的に解きます。
 NISQ（ノイズありの中規模量子デバイス）時代でも動かせるよう設計されている点が実用上のポイントです。

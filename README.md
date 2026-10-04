@@ -47,6 +47,12 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 （業務での採用を検討している場合は [docs/when_to_use_quantum.md](docs/when_to_use_quantum.md)
 「量子より枯れた技術のほうが優れているかもしれない話」も）
 
+ワークショップや勉強会で使う場合は [docs/workshop.md](docs/workshop.md)（進行ガイド）を参照してください。
+例14〜19は「AIに日本語で頼むだけで量子コンピュータに届く」ことを体験するための、生活・経営・研究の
+身近な題材です（どれも古典的な方法で一瞬で解ける規模で、量子が不要なケースもあわせて説明しています）。
+なお、このリポジトリの実行結果はすべてシミュレータのものです。実機のクセについては
+[docs/simulator_vs_hardware.md](docs/simulator_vs_hardware.md) を参照してください。
+
 ## 使用例一覧
 
 | # | 例 | 使ったツール | 内容 |
@@ -64,6 +70,12 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 | 11 | [BB84量子鍵配送](examples/11_bb84_quantum_key_distribution.md) | `run_circuit` | アンシラ量子ビットで盗聴者Eveを表現し、盗聴の有無でBobの誤り率が0%→約26%（理論値25%）に変わることを確認。**実生活**: 盗聴を物理法則で検知できる高セキュリティ通信（実際の秘密鍵配送には使用できません） |
 | 12 | [VQEで水素分子(H2)の基底エネルギー](examples/12_vqe_h2_molecule.md) | `run_vqe` | PySCF/OpenFermionで実際の分子ハミルトニアンを生成し、ポテンシャルエネルギー曲線をFCI/HFと比較。平衡結合長ではFCIと完全一致、1.5Åでは局所解にはまった実例も正直に報告。**実生活**: 創薬・触媒設計・電池材料シミュレーションの入り口 |
 | 13 | [スーパーデンスコーディング](examples/13_superdense_coding.md) | `run_circuit`, `draw_circuit` | ベル対を事前共有し、Aliceが1量子ビットにゲート(I/X/Z/XZ)をかけて送るだけで2古典ビット(00/01/10/11)をBobに伝送。4パターン全て100%で正しく復号（決定論的回路）。**実生活**: 量子ネットワーク・量子テレポーテーションと対になる基礎プロトコル |
+| 14 | [相性を考えたチーム分け](examples/14_team_split.md) | `run_qaoa` | 6人を3人ずつに分ける。同点の最適解が2つあり、どちらを選ぶかは人間が決める例。**生活**: 班分け・プロジェクトの担当決め（ワークショップ向け） |
+| 15 | [週末当番の割当](examples/15_weekend_shift.md) | `run_qaoa` | 「各日1人」「1人1日まで」「NGの日」を罰点でQUBOに書く。**1回目のQAOAは最適解を外し**、seedを変えた2回目で到達した経緯も記載。**生活**: シフト表・当番・家事分担（ワークショップ向け） |
+| 16 | [出店候補地の選定](examples/16_store_location.md) | `run_qaoa` | 5候補から2店。「月商の大きい順」の直感は共食いで外れ、QAOA/全探索の最適解が上回る。**経営**: 出店・拠点配置（ワークショップ向け） |
+| 17 | [会議のスケジュール調整](examples/17_meeting_schedule.md) | `run_qaoa` | 5会議を午前/午後へ。どうしても重なる中で困る人数が最小の妥協案を選ぶ（重み付きMaxCut）。**経営**: 会議・時間割の調整（ワークショップ向け） |
+| 18 | [実験条件のスクリーニング](examples/18_experiment_screening.md) | `run_qaoa` | 情報量・費用・冗長性を天秤にかけて試す条件を選ぶ。「単独で黒字なら全部」の直感より大幅に良い。**研究**: 実験計画（ワークショップ向け） |
+| 19 | [査読担当の割当](examples/19_reviewer_assignment.md) | `run_qaoa` | 例15と同じ型で利益相反も考慮。**素朴な方法でも最適解が出る＝最適化が不要な例**。**研究**: 査読・副査の割当（ワークショップ向け） |
 
 ## 無料枠の制限（free tier）
 
@@ -122,14 +134,17 @@ claude plugin install blueqat-mcp-playground@blueqat-mcp-playground
 │   ├── fetch_portfolio_data.py        例8用の株価データ取得・QUBO生成スクリプト
 │   ├── build_feature_selection_qubo.py 例9用の特徴量選択QUBO生成スクリプト
 │   ├── build_bb84_circuit.py          例11用のBB84回路生成スクリプト
-│   └── build_h2_vqe.py                例12用のH2分子ハミルトニアン生成スクリプト
+│   ├── build_h2_vqe.py                例12用のH2分子ハミルトニアン生成スクリプト
+│   └── build_workshop_qubos.py        例14〜19用のQUBO生成・全探索による答え合わせスクリプト
 └── docs/
     ├── basics.md              量子コンピューティングの基礎
     ├── applications.md        実生活での応用イメージ
     ├── gates.md               対応ゲート一覧
     ├── tiers_and_pricing.md   ティア制限と実機課金
     ├── hardware.md            実機QPU一覧
-    └── when_to_use_quantum.md 業務採用を検討する人向け（枯れた技術との比較）
+    ├── simulator_vs_hardware.md シミュレータと実機の違い（実機のクセ、キャリブレーションの実データ）
+    ├── when_to_use_quantum.md 業務採用を検討する人向け（枯れた技術との比較）
+    └── workshop.md            ワークショップ進行ガイド（例14〜19の使い方、量子が不要なケース）
 ```
 
 回路図について: `draw_circuit` ツール自体はPNGをチャット表示用に返すだけで生バイト列として保存できないため、

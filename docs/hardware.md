@@ -12,5 +12,8 @@
 - **Lucy Simulator**: `always_on: true` のホステッドシミュレータ。実機ではないが実機と同じ投入経路
   （`submit_hardware_job` 系ツール）で使える。
 
+実機はシミュレータと比べてノイズ・量子ビットのつながりの制約・稼働時間などのクセが強く、同じ回路でも結果が
+大きく変わります。具体的な数値は [simulator_vs_hardware.md](simulator_vs_hardware.md) にまとめています。
+
 実機ジョブの投入には `confirm=true` の明示的な指定が必要です（誤操作防止）。本リポジトリの例では
 シミュレータ経由（`run_circuit` / `run_qaoa` / `run_vqe`）のみを扱っており、実機への投入は行っていません。
