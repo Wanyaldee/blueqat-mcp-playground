@@ -53,6 +53,11 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 なお、このリポジトリの実行結果はすべてシミュレータのものです。実機のクセについては
 [docs/simulator_vs_hardware.md](docs/simulator_vs_hardware.md) を参照してください。
 
+量子コンピュータが答えを出すまでの途中経過を目で見たい場合は、姉妹リポジトリの
+[quantum-visualizer](https://github.com/Wanyaldee/quantum-visualizer)（[Web で開く](https://wanyaldee.github.io/quantum-visualizer/)）へ。
+ゲート式では例1・2・3・13の回路を1ゲートずつ進めて振幅と位相の変化を、アニーリングでは例14のQUBOを
+解く様子（エネルギー準位と状態の居場所）を見られます。このリポジトリの回路JSONやQUBOを貼り付けて試すこともできます。
+
 ## 使用例一覧
 
 | # | 例 | 使ったツール | 内容 |
