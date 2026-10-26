@@ -1,5 +1,8 @@
 # 例14: 相性を考えたチーム分け — 席替え・班分け・プロジェクトの担当決め
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#anneal/team)
+> この例と同じ QUBO を、量子アニーリングで解く様子を見られます（QAOA そのものの再現ではありません）。
+
 > **ワークショップ向けの応用例です。** この規模なら手作業や普通のプログラムでも一瞬で解けます。
 > 結果はシミュレータ（ノイズのない理想的な量子コンピュータ）のもので、実機では同じようにはいきません
 > （[docs/simulator_vs_hardware.md](../docs/simulator_vs_hardware.md)）。

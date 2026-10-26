@@ -11,10 +11,12 @@ STO-3G基底のH2は最小構成の量子化学ベンチマークで、Jordan-Wi
 （10量子ビット、ハミルトニアン最大20項）に余裕をもって収まる。
 
 実行: uv run --with pyscf --with openfermion --with openfermionpyscf python3 scripts/build_h2_vqe.py
+全結合長のJSONを書き出す: 上のコマンドの末尾に --json assets/12_h2_hamiltonians.json
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 
 from openfermion.chem import MolecularData
@@ -65,14 +67,38 @@ def compute_point(bond_length):
     }
 
 
+def to_published_entry(point):
+    """assets/12_h2_hamiltonians.json の1要素。constant は run_vqe の結果に後から足す定数項。"""
+    return {
+        "bond_length": point["bond_length"],
+        "n_qubits": point["n_qubits"],
+        "constant": round(point["identity_offset"], 8),
+        "hf_energy": round(point["hf_energy"], 8),
+        "fci_energy": round(point["fci_energy"], 8),
+        "hamiltonian": point["hamiltonian_without_identity"],
+    }
+
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--json", help="全結合長のハミルトニアンをこのパスにJSONで書き出す")
+    args = parser.parse_args()
+
+    points = []
     for bl in BOND_LENGTHS:
         point = compute_point(bl)
+        points.append(point)
         print(f"\n=== bond_length={bl} Å ===")
         print(f"n_qubits={point['n_qubits']} n_terms={point['n_terms']} "
               f"identity_offset={point['identity_offset']:.6f}")
         print(f"hf_energy={point['hf_energy']:.6f}  fci_energy={point['fci_energy']:.6f}")
         print(json.dumps(point["hamiltonian_without_identity"]))
+
+    if args.json:
+        with open(args.json, "w", encoding="utf-8") as f:
+            json.dump([to_published_entry(p) for p in points], f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        print(f"\nwrote {args.json}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
 # 例15: 週末当番の割当 — シフト表・町内会の当番・家事分担
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#anneal/shift)
+> この例と同じ QUBO を、量子アニーリングで解く様子を見られます（QAOA そのものの再現ではありません）。
+
 > **ワークショップ向けの応用例です。** この規模なら手作業や普通のプログラムでも一瞬で解けます。
 > 結果はシミュレータ（ノイズのない理想的な量子コンピュータ）のもので、実機では同じようにはいきません
 > （[docs/simulator_vs_hardware.md](../docs/simulator_vs_hardware.md)）。

@@ -1,5 +1,8 @@
 # 例18: 実験条件のスクリーニング — 限られた予算で「似た実験」を避けて選ぶ
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#anneal/screening)
+> この例と同じ QUBO を、量子アニーリングで解く様子を見られます（QAOA そのものの再現ではありません）。
+
 > **ワークショップ向けの応用例です。** この規模なら手作業や普通のプログラムでも一瞬で解けます。
 > 結果はシミュレータ（ノイズのない理想的な量子コンピュータ）のもので、実機では同じようにはいきません
 > （[docs/simulator_vs_hardware.md](../docs/simulator_vs_hardware.md)）。

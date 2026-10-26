@@ -1,0 +1,1451 @@
+[
+  {
+    "bond_length": 0.3,
+    "n_qubits": 4,
+    "constant": 1.30072386,
+    "hf_energy": -0.59382776,
+    "fci_energy": -0.60180371,
+    "hamiltonian": [
+      {
+        "coeff": 0.25869154,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.25869154,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": -0.54995737,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": -0.54995737,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.18800464,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.04020463,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.04020463,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.04020463,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.04020463,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.14527089,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.18547552,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.18547552,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.14527089,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.19623437,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bond_length": 0.5,
+    "n_qubits": 4,
+    "constant": 0.37983135,
+    "hf_energy": -1.04299627,
+    "fci_energy": -1.05515979,
+    "hamiltonian": [
+      {
+        "coeff": 0.21393531,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.21393531,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": -0.36914432,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": -0.36914432,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.17992651,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.04221756,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.04221756,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.04221756,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.04221756,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.1345924,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.17680996,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.17680996,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.1345924,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.18620984,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bond_length": 0.7414,
+    "n_qubits": 4,
+    "constant": -0.09886397,
+    "hf_energy": -1.11668439,
+    "fci_energy": -1.13727017,
+    "hamiltonian": [
+      {
+        "coeff": 0.17119775,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.17119775,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": -0.22278593,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": -0.22278593,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.16862219,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.0453222,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.0453222,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.0453222,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.0453222,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.12054482,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.16586702,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.16586702,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.12054482,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.17434844,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bond_length": 1.0,
+    "n_qubits": 4,
+    "constant": -0.32760819,
+    "hf_energy": -1.06610865,
+    "fci_energy": -1.10115033,
+    "hamiltonian": [
+      {
+        "coeff": 0.13716573,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.13716573,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": -0.13036292,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": -0.13036292,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.15660062,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.04919765,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.04919765,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.04919765,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.04919765,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.10622904,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.15542669,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.15542669,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.10622904,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.16326769,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bond_length": 1.5,
+    "n_qubits": 4,
+    "constant": -0.49178578,
+    "hf_energy": -0.91087355,
+    "fci_energy": -0.99814935,
+    "hamiltonian": [
+      {
+        "coeff": 0.0934565,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.0934565,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": -0.03564482,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": -0.03564482,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.13817585,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.05738398,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.05738398,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.05738398,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.05738398,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.08253705,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.13992104,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.13992104,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.08253705,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.14585519,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bond_length": 2.0,
+    "n_qubits": 4,
+    "constant": -0.53393635,
+    "hf_energy": -0.78379265,
+    "fci_energy": -0.94864111,
+    "hamiltonian": [
+      {
+        "coeff": 0.0672793,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.0672793,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.0066513,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.0066513,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.1273657,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.06478462,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.06478462,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.06478462,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.06478462,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.0650157,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.12980031,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.12980031,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.0650157,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.13366603,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bond_length": 2.5,
+    "n_qubits": 4,
+    "constant": -0.54359909,
+    "hf_energy": -0.7029436,
+    "fci_energy": -0.93605492,
+    "hamiltonian": [
+      {
+        "coeff": 0.05264858,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          }
+        ]
+      },
+      {
+        "coeff": 0.05264858,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.02551388,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.02551388,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.12142002,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 1
+          }
+        ]
+      },
+      {
+        "coeff": 0.07055251,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.07055251,
+        "paulis": [
+          {
+            "op": "Y",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "X",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": -0.07055251,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "X",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "Y",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.07055251,
+        "paulis": [
+          {
+            "op": "X",
+            "qubit": 0
+          },
+          {
+            "op": "Y",
+            "qubit": 1
+          },
+          {
+            "op": "Y",
+            "qubit": 2
+          },
+          {
+            "op": "X",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.05272626,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.12327878,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 0
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.12327878,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 2
+          }
+        ]
+      },
+      {
+        "coeff": 0.05272626,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 1
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      },
+      {
+        "coeff": 0.12551495,
+        "paulis": [
+          {
+            "op": "Z",
+            "qubit": 2
+          },
+          {
+            "op": "Z",
+            "qubit": 3
+          }
+        ]
+      }
+    ]
+  }
+]

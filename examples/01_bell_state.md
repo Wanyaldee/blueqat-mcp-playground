@@ -1,5 +1,8 @@
 # 例1: ベル状態（2量子ビットの最小エンタングルメント）
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#gate/bell)
+> H と CNOT で 00 と 11 だけが残るまでを、1ゲートずつ見られます。
+
 最もシンプルな例。H ゲートで重ね合わせを作り、CNOT でエンタングルさせるだけの2量子ビット回路です。
 `run_circuit` の3種類の出力形式（counts / statevector / amplitude）を同じ回路に対して試しました。
 
