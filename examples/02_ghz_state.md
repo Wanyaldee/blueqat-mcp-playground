@@ -1,5 +1,8 @@
 # 例2: GHZ状態（3量子ビットへの拡張）
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#gate/ghz)
+> もつれが3量子ビットに広がり、000 と 111 だけが残るまでを1ゲートずつ見られます。
+
 ベル状態を3量子ビットに拡張した GHZ 状態 $\frac{1}{\sqrt{2}} (|000\rangle + |111\rangle)$ です。
 `circuit_info` で実行前に回路のゲート数・深さを確認し、`draw_circuit` で回路図を描画してから実行しています。
 

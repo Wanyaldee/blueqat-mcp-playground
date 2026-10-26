@@ -1,5 +1,8 @@
 # 例7: QAOAで「予算ぴったり一致」問題を解く — 経理の消込・在庫の詰め合わせ
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#anneal/budget)
+> この例と同じ QUBO を、量子アニーリングで解く様子を見られます（QAOA そのものの再現ではありません）。
+
 [例4](04_qaoa_maxcut.md)のMaxCutは「対立を避けるグループ分け」でしたが、今回は実務でよくある
 **部分和問題（subset sum）**をQAOAで解きます。4つの案件の中から、合計金額がちょうど予算と一致する
 組み合わせを選びます。この定式化は以下のような実務の場面にそのまま使えます。

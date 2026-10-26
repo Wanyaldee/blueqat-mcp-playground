@@ -55,6 +55,10 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 
 ## 使用例一覧
 
+**動きで見る:** [quantum-visualizer](https://wanyaldee.github.io/quantum-visualizer/) は、使用例の回路や QUBO が、ブラウザ上でどう動くかを1ステップずつ見られる姉妹アプリです。
+各例の冒頭に、その例の「ふるまいを見る」リンクがあります（例8・9は量子ビット数が多いため再現していません）。
+例と visualizer の対応は [使用例の一覧と基礎知識](https://wanyaldee.github.io/quantum-visualizer/#learn/examples) のページにまとまっています。
+
 | # | 例 | 使ったツール | 内容 |
 |---|----|-------------|------|
 | 1 | [ベル状態](examples/01_bell_state.md) | `run_circuit` | 2量子ビットの最小のエンタングルメント例。counts / statevector / amplitude の3通りの出力を比較 |

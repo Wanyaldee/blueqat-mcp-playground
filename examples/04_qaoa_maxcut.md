@@ -1,5 +1,8 @@
 # 例4: QAOAでMaxCut問題を解く
 
+> 動きで見る: [quantum-visualizer でこの例のふるまいを見る](https://wanyaldee.github.io/quantum-visualizer/#anneal/frustration)
+> この例と同じ QUBO を、量子アニーリングで解く様子を見られます（QAOA そのものの再現ではありません）。visualizer では「全員の希望は叶わない三角形（フラストレーション）」として見せています。
+
 `run_qaoa` は QUBO（0/1変数の二次多項式）を最小化する問題を、QAOA + 古典最適化（実質VQE）で解いて
 サンプリングまでしてくれるツールです。ここでは3頂点の完全グラフ（三角形）に対する MaxCut 問題を解きます。
 
