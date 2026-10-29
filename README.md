@@ -40,6 +40,9 @@ MCPクライアント（Claude Codeなど）から `run_circuit` ツールを、
 
 ゲート名の一覧は `list_gates` ツールで取得できます（`docs/gates.md` に一覧を転記済み）。
 
+AIツール（Claude / Claude Code / Codex CLI / Antigravity CLI）への接続方法は
+[docs/setup.md](docs/setup.md)（セットアップガイド）を参照してください。
+
 初めての人は先に [docs/basics.md](docs/basics.md)（量子コンピューティングの基礎）を読むと、以下の例が
 理解しやすくなります。「結局何の役に立つの？」という人は [docs/applications.md](docs/applications.md)
 （実生活での応用イメージ）へ。
@@ -150,6 +153,7 @@ claude plugin install blueqat-mcp-playground@blueqat-mcp-playground
     ├── tiers_and_pricing.md   ティア制限と実機課金
     ├── hardware.md            実機QPU一覧
     ├── simulator_vs_hardware.md シミュレータと実機の違い（実機のクセ、キャリブレーションの実データ）
+    ├── setup.md               セットアップガイド（APIキーの発行、AIツールへの接続）
     ├── when_to_use_quantum.md 業務採用を検討する人向け（枯れた技術との比較）
     └── workshop.md            ワークショップ進行ガイド（例14〜19の使い方、量子が不要なケース）
 ```
